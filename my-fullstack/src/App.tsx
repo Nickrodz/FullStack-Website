@@ -9,7 +9,7 @@ function App() {
   const [response, setResponse] = useState("");
 
   const handleSubmit = async () => {
-    const res = await fetch("http://localhost:5000/sub", {
+    const res = await fetch("http://localhost:5050/sub", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,11 +18,11 @@ function App() {
     });
 
     const data = await res.json();
-    setResponse(data.status + " | Echo: " + data.yourMessage);
+    setResponse(data.status + " | Echo: ");
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/hello")
+    fetch("http://localhost:5050/api/hello")
       .then((res) => res.json())
       .then((data) => setBackendData(data.message));
   }, []);
