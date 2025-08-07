@@ -1,51 +1,23 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./header";
-import Footer from "./footer";
-import Food from "./food";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./pages/home";
+import { Page1 } from "./pages/page1";
+import { Page2 } from "./pages/page2";
+import { Page3 } from "./pages/page3";
+import { Layout } from "./Layout";
 function App() {
-  const [backendData, setBackendData] = useState("");
-  const [input, setInput] = useState("");
-  const [response, setResponse] = useState("");
-
-  const handleSubmit = async () => {
-    const res = await fetch("http://localhost:5050/sub", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message: input }),
-    });
-
-    const data = await res.json();
-    setResponse(data.status + " | Echo: ");
-  };
-
-  useEffect(() => {
-    fetch("http://localhost:5050/api/hello")
-      .then((res) => res.json())
-      .then((data) => setBackendData(data.message));
-  }, []);
-
   return (
     <>
-      <Header />
-      <h1>This is a test header 1</h1>
-      <Food />
-      <div className="block"></div>
-      <p>{backendData}</p>
-      <h1>Send Information to backend</h1>
-      <div>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type a message"
-        />
-        <button onClick={handleSubmit}>Send</button>
-        <p>{response}</p>
-      </div>
-      <Footer />
+      <Router>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/page1" element={<Page1 />} />
+            <Route path="/page2" element={<Page2 />} />
+            <Route path="/page3" element={<Page3 />} />
+          </Route>
+        </Routes>
+      </Router>
     </>
   );
 }
