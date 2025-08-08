@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Food from "../food";
 import Footer from "../footer";
 import Header from "../header";
+import { Button } from "@/components/ui/button";
 
 export function Home() {
   const [backendData, setBackendData] = useState("");
@@ -41,7 +42,7 @@ export function Home() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type a message"
         />
-        <button onClick={handleSubmit}>Send</button>
+        <Button onClick={handleSubmit}>Send</Button>
         <p>{response}</p>
       </div>
       <Footer />
