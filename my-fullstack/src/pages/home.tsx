@@ -3,7 +3,6 @@ import Food from "../food";
 import Footer from "../footer";
 import Header from "../header";
 import { Button } from "@/components/ui/button";
-import { handleSubmit } from "@/api/infoBackend";
 
 export function Home() {
   type dataItem = {
@@ -12,8 +11,6 @@ export function Home() {
   };
 
   const [backendData, setBackendData] = useState("");
-  const [input, setInput] = useState("");
-  const [input2, setInput2] = useState("");
   const [receive, setReceive] = useState<dataItem[]>([]);
 
   useEffect(() => {
@@ -52,33 +49,6 @@ export function Home() {
         ) : (
           <p>No data received yet</p>
         )}
-      </div>
-      <h1>Send Information to backend</h1>
-      <div>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type a message"
-        />
-        <input
-          type="text"
-          value={input2}
-          onChange={(e) => setInput2(e.target.value)}
-          placeholder="Type a message"
-        />
-        <Button
-          onClick={() => {
-            try {
-              const data = handleSubmit(input, input2);
-              console.log("Server response:", data);
-            } catch (err) {
-              console.error(err);
-            }
-          }}
-        >
-          Send
-        </Button>
       </div>
       <Footer />
     </>
