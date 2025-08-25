@@ -1,5 +1,5 @@
 export async function handleSubmit(input: string, input2: string) {
-  const res = await fetch("http://localhost:5050/sub", {
+  const res = await fetch("http://localhost:5050/users", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

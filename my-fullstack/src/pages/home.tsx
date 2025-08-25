@@ -12,7 +12,7 @@ export function Home() {
 
   const [backendData, setBackendData] = useState("");
   const [receive, setReceive] = useState<dataItem[]>([]);
-
+  //const [login, setLogin] = useState<false>;
   useEffect(() => {
     fetch("http://localhost:5050/api/hello")
       .then((res) => res.json())

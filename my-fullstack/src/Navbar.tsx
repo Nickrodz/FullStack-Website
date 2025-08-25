@@ -3,7 +3,7 @@ import { Button } from "./components/ui/button";
 export function Navbar() {
   return (
     <>
-      <div className="bg-red-500 grid grid-flow-col justify-items-center">
+      <div className="bg-blue-500 grid grid-flow-col justify-items-center">
         <Button>
           <Link to="/">Home</Link>
         </Button>
